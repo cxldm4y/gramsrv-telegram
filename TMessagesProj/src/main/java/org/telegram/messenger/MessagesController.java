@@ -6127,7 +6127,7 @@ public class MessagesController extends BaseController implements NotificationCe
                         TLRPC.TL_photos_photo photo = (TLRPC.TL_photos_photo) response;
                         ArrayList<TLRPC.PhotoSize> sizes = photo.photo.sizes;
                         TLRPC.PhotoSize smallSize = FileLoader.getClosestPhotoSizeWithSize(sizes, 100);
-                        TLRPC.PhotoSize bigSize = FileLoader.getClosestPhotoSizeWithSize(sizes, 1000);
+                        TLRPC.PhotoSize bigSize = FileLoader.getClosestPhotoSizeWithSize(sizes, 2560);
                         user.photo = new TLRPC.TL_userProfilePhoto();
                         user.photo.photo_id = photo.photo.id;
                         if (smallSize != null) {
@@ -9004,7 +9004,7 @@ public class MessagesController extends BaseController implements NotificationCe
                             user1.photo.has_video = !photos_photo.photo.video_sizes.isEmpty();
                             user1.photo.photo_id = photos_photo.photo.id;
                             user1.photo.photo_small = FileLoader.getClosestPhotoSizeWithSize(photos_photo.photo.sizes, 150).location;
-                            user1.photo.photo_big = FileLoader.getClosestPhotoSizeWithSize(photos_photo.photo.sizes, 800).location;
+                            user1.photo.photo_big = FileLoader.getClosestPhotoSizeWithSize(photos_photo.photo.sizes, 2560).location;
                             user1.photo.dc_id = photos_photo.photo.dc_id;
                         } else {
                             user1.photo = new TLRPC.TL_userProfilePhotoEmpty();

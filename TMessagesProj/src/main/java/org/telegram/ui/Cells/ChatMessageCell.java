@@ -8370,7 +8370,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                             durationWidth = (int) Math.ceil(Theme.chat_durationPaint.measureText(str));
                             videoInfoLayout = new StaticLayout(str, Theme.chat_durationPaint, durationWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
                         } else if (drawInstantViewType == 7) {
-                            currentPhotoObject = FileLoader.getClosestPhotoSizeWithSize(document.thumbs, 700);
+                            currentPhotoObject = FileLoader.getClosestPhotoSizeWithSize(document.thumbs, 2560);
                             if (currentMessageObject.strippedThumb == null) {
                                 currentPhotoObjectThumb = FileLoader.getClosestPhotoSizeWithSize(document.thumbs, 40);
                             } else {

@@ -440,7 +440,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
                                 user1.photo.photo_id = prevAvatar.id;
                                 ArrayList<TLRPC.PhotoSize> sizes = prevAvatar.sizes;
                                 TLRPC.PhotoSize smallSize2 = FileLoader.getClosestPhotoSizeWithSize(sizes, 100);
-                                TLRPC.PhotoSize bigSize2 = FileLoader.getClosestPhotoSizeWithSize(sizes, 1000);
+                                TLRPC.PhotoSize bigSize2 = FileLoader.getClosestPhotoSizeWithSize(sizes, 2560);
 
                                 if (smallSize2 != null) {
                                     user1.photo.photo_small = smallSize2.location;
@@ -748,7 +748,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
         TLRPC.User user = getMessagesController().getUser(user_id);
         if (user.photo != null && user.photo.personal) {
             if (prevAvatar != null) {
-                TLRPC.PhotoSize photoSize = FileLoader.getClosestPhotoSizeWithSize(prevAvatar.sizes, 1000);
+                TLRPC.PhotoSize photoSize = FileLoader.getClosestPhotoSizeWithSize(prevAvatar.sizes, 2560);
                 ImageLocation location = ImageLocation.getForPhoto(photoSize, prevAvatar);
                 oldAvatarView.setImage(location, "50_50", avatarDrawable, null);
             }
@@ -923,7 +923,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
                 }
                 if (user != null) {
                     TLRPC.PhotoSize smallSize2 = FileLoader.getClosestPhotoSizeWithSize(sizes, 100);
-                    TLRPC.PhotoSize bigSize2 = FileLoader.getClosestPhotoSizeWithSize(sizes, 1000);
+                    TLRPC.PhotoSize bigSize2 = FileLoader.getClosestPhotoSizeWithSize(sizes, 2560);
                     if (smallSize2 != null && avatar != null) {
                         File destFile = FileLoader.getInstance(currentAccount).getPathToAttach(smallSize2, true);
                         File src = FileLoader.getInstance(currentAccount).getPathToAttach(avatar, true);

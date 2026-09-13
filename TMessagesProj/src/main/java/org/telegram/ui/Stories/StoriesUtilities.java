@@ -860,12 +860,12 @@ public class StoriesUtilities {
             return;
         }
         if (storyItem.media.document != null) {
-            TLRPC.PhotoSize size = FileLoader.getClosestPhotoSizeWithSize(storyItem.media.document.thumbs, 1000);
+            TLRPC.PhotoSize size = FileLoader.getClosestPhotoSizeWithSize(storyItem.media.document.thumbs, 2560);
             imageReceiver.setImage(ImageLocation.getForDocument(size, storyItem.media.document), "100_100", null, null, ImageLoader.createStripedBitmap(storyItem.media.document.thumbs), 0, null, storyItem, 0);
         } else {
             TLRPC.Photo photo = storyItem.media != null ? storyItem.media.photo : null;
             if (photo != null && photo.sizes != null) {
-                TLRPC.PhotoSize size = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, 1000);
+                TLRPC.PhotoSize size = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, 2560);
                 imageReceiver.setImage(null, null, ImageLocation.getForPhoto(size, photo), "100_100", null, null, ImageLoader.createStripedBitmap(photo.sizes), 0, null, storyItem, 0);
             } else {
                 imageReceiver.clearImage();

@@ -483,7 +483,7 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
             imageUpdater.setDelegate(this);
             TLRPC.UserFull userFull = getMessagesController().getUserFull(getUserConfig().clientUserId);
             if (UserObject.hasFallbackPhoto(userFull)) {
-                TLRPC.PhotoSize smallSize = FileLoader.getClosestPhotoSizeWithSize(userFull.fallback_photo.sizes, 1000);
+                TLRPC.PhotoSize smallSize = FileLoader.getClosestPhotoSizeWithSize(userFull.fallback_photo.sizes, 2560);
                 if (smallSize != null) {
                     avatarForRest = smallSize;
                     avatarForRestPhoto = userFull.fallback_photo;

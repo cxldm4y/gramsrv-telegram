@@ -29,7 +29,7 @@ public class PhotoUtilities {
     public static void applyPhotoToUser(TLRPC.Photo photo, TLRPC.User user, boolean personal) {
         ArrayList<TLRPC.PhotoSize> sizes = photo.sizes;
         TLRPC.PhotoSize smallSize2 = FileLoader.getClosestPhotoSizeWithSize(sizes, 100);
-        TLRPC.PhotoSize bigSize2 = FileLoader.getClosestPhotoSizeWithSize(sizes, 1000);
+        TLRPC.PhotoSize bigSize2 = FileLoader.getClosestPhotoSizeWithSize(sizes, 2560);
 
         user.flags |= 32;
         user.photo = new TLRPC.TL_userProfilePhoto();
@@ -75,7 +75,7 @@ public class PhotoUtilities {
                     if (photos_photo.photo instanceof TLRPC.TL_photo) {
                         if (user != null) {
                             TLRPC.PhotoSize smallSize2 = FileLoader.getClosestPhotoSizeWithSize(photos_photo.photo.sizes, 100);
-                            TLRPC.PhotoSize bigSize2 = FileLoader.getClosestPhotoSizeWithSize(photos_photo.photo.sizes, 1000);
+                            TLRPC.PhotoSize bigSize2 = FileLoader.getClosestPhotoSizeWithSize(photos_photo.photo.sizes, 2560);
                             if (smallSize2 != null && smallSize != null && smallSize.location != null) {
                                 File destFile = FileLoader.getInstance(currentAccount).getPathToAttach(smallSize2, true);
                                 File src = FileLoader.getInstance(currentAccount).getPathToAttach(smallSize.location, true);
@@ -114,10 +114,10 @@ public class PhotoUtilities {
 
     public static void replacePhotoImagesInCache(int currentAccount, TLRPC.Photo photo, TLRPC.Photo photoToReplace) {
         TLRPC.PhotoSize smallSize = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, 100);
-        TLRPC.PhotoSize bigSize = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, 1000);
+        TLRPC.PhotoSize bigSize = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, 2560);
 
         TLRPC.PhotoSize smallSize2 = FileLoader.getClosestPhotoSizeWithSize(photoToReplace.sizes, 100);
-        TLRPC.PhotoSize bigSize2 = FileLoader.getClosestPhotoSizeWithSize(photoToReplace.sizes, 1000);
+        TLRPC.PhotoSize bigSize2 = FileLoader.getClosestPhotoSizeWithSize(photoToReplace.sizes, 2560);
         if (smallSize2 != null && smallSize != null) {
             File destFile = FileLoader.getInstance(currentAccount).getPathToAttach(smallSize2, true);
             File src = FileLoader.getInstance(currentAccount).getPathToAttach(smallSize, true);
