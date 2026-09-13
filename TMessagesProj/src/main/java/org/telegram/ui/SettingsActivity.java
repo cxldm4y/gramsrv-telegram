@@ -1897,7 +1897,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                         final TLRPC.TL_photos_photo photos_photo = (TLRPC.TL_photos_photo) response;
                         final ArrayList<TLRPC.PhotoSize> sizes = photos_photo.photo.sizes;
                         final TLRPC.PhotoSize small = FileLoader.getClosestPhotoSizeWithSize(sizes, 150);
-                        final TLRPC.PhotoSize big = FileLoader.getClosestPhotoSizeWithSize(sizes, 800);
+                        final TLRPC.PhotoSize big = FileLoader.getClosestPhotoSizeWithSize(sizes, 2560);
                         final TLRPC.VideoSize videoSize = photos_photo.photo.video_sizes.isEmpty() ? null : FileLoader.getClosestVideoSizeWithSize(photos_photo.photo.video_sizes, 1000);
                         user.photo = new TLRPC.TL_userProfilePhoto();
                         user.photo.photo_id = photos_photo.photo.id;

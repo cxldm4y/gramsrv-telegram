@@ -16088,7 +16088,7 @@ public class MessagesController extends BaseController implements NotificationCe
                         String newKey = small.location.volume_id + "_" + small.location.local_id + "@50_50";
                         ImageLoader.getInstance().replaceImageInCache(oldKey, newKey, ImageLocation.getForPhoto(small, photo), true);
                     }
-                    TLRPC.PhotoSize big = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, 800);
+                    TLRPC.PhotoSize big = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, 2560);
                     if (big != null && bigSize != null) {
                         File destFile = getFileLoader().getPathToAttach(big, true);
                         File src = getFileLoader().getPathToAttach(bigSize, true);

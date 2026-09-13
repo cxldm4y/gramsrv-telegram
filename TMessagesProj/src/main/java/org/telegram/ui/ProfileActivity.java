@@ -2855,7 +2855,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     undoView.showWithAction(userId, UndoView.ACTION_PROFILE_PHOTO_CHANGED, photo.video_sizes.isEmpty() ? null : 1);
                     TLRPC.User user = getMessagesController().getUser(userConfig.clientUserId);
 
-                    TLRPC.PhotoSize bigSize = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, 800);
+                    TLRPC.PhotoSize bigSize = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, 2560);
                     if (user != null) {
                         TLRPC.PhotoSize smallSize = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, 90);
                         user.photo.photo_id = photo.id;
@@ -2937,7 +2937,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             if (nextPhoto != null) {
                                 getUserConfig().getCurrentUser().photo = new TLRPC.TL_userProfilePhoto();
                                 TLRPC.PhotoSize smallSize = FileLoader.getClosestPhotoSizeWithSize(nextPhoto.sizes, 90);
-                                TLRPC.PhotoSize bigSize = FileLoader.getClosestPhotoSizeWithSize(nextPhoto.sizes, 1000);
+                                TLRPC.PhotoSize bigSize = FileLoader.getClosestPhotoSizeWithSize(nextPhoto.sizes, 2560);
                                 if (smallSize != null && bigSize != null) {
                                     getUserConfig().getCurrentUser().photo.photo_small = smallSize.location;
                                     getUserConfig().getCurrentUser().photo.photo_big = bigSize.location;
@@ -12826,7 +12826,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         TLRPC.TL_photos_photo photos_photo = (TLRPC.TL_photos_photo) response;
                         ArrayList<TLRPC.PhotoSize> sizes = photos_photo.photo.sizes;
                         TLRPC.PhotoSize small = FileLoader.getClosestPhotoSizeWithSize(sizes, 150);
-                        TLRPC.PhotoSize big = FileLoader.getClosestPhotoSizeWithSize(sizes, 800);
+                        TLRPC.PhotoSize big = FileLoader.getClosestPhotoSizeWithSize(sizes, 2560);
                         TLRPC.VideoSize videoSize = photos_photo.photo.video_sizes.isEmpty() ? null : FileLoader.getClosestVideoSizeWithSize(photos_photo.photo.video_sizes, 1000);
                         user.photo = new TLRPC.TL_userProfilePhoto();
                         user.photo.photo_id = photos_photo.photo.id;

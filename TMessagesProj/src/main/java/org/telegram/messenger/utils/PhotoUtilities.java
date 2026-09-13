@@ -182,7 +182,7 @@ public class PhotoUtilities {
                         TLRPC.TL_photos_photo photos_photo = (TLRPC.TL_photos_photo) response;
                         ArrayList<TLRPC.PhotoSize> sizes = photos_photo.photo.sizes;
                         TLRPC.PhotoSize small = FileLoader.getClosestPhotoSizeWithSize(sizes, 150);
-                        TLRPC.PhotoSize big = FileLoader.getClosestPhotoSizeWithSize(sizes, 800);
+                        TLRPC.PhotoSize big = FileLoader.getClosestPhotoSizeWithSize(sizes, 2560);
                         TLRPC.VideoSize videoSize = photos_photo.photo.video_sizes.isEmpty() ? null : FileLoader.getClosestVideoSizeWithSize(photos_photo.photo.video_sizes, 1000);
                         user.photo = new TLRPC.TL_userProfilePhoto();
                         user.photo.photo_id = photos_photo.photo.id;

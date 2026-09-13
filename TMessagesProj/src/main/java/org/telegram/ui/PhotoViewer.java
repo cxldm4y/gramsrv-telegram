@@ -5618,7 +5618,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                     if (photo == null || photo.sizes.isEmpty()) {
                         return;
                     }
-                    TLRPC.PhotoSize bigSize = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, 800);
+                    TLRPC.PhotoSize bigSize = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, 2560);
                     TLRPC.PhotoSize smallSize = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, 90);
                     UserConfig userConfig = UserConfig.getInstance(currentAccount);
                     if (avatarsDialogId == userConfig.clientUserId) {

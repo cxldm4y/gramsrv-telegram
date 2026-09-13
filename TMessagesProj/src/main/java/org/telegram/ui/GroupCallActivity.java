@@ -9308,7 +9308,7 @@ public class GroupCallActivity extends BottomSheet implements NotificationCenter
                                 TLRPC.TL_photos_photo photos_photo = (TLRPC.TL_photos_photo) response;
                                 ArrayList<TLRPC.PhotoSize> sizes = photos_photo.photo.sizes;
                                 TLRPC.PhotoSize small = FileLoader.getClosestPhotoSizeWithSize(sizes, 150);
-                                TLRPC.PhotoSize big = FileLoader.getClosestPhotoSizeWithSize(sizes, 800);
+                                TLRPC.PhotoSize big = FileLoader.getClosestPhotoSizeWithSize(sizes, 2560);
                                 TLRPC.VideoSize videoSize = photos_photo.photo.video_sizes.isEmpty() ? null : photos_photo.photo.video_sizes.get(0);
 
                                 user.photo = new TLRPC.TL_userProfilePhoto();

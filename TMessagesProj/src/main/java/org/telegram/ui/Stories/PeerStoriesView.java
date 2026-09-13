@@ -5079,7 +5079,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                                 thumbDrawable = ImageLoader.createStripedBitmap(photo.sizes);
                             }
                             TLRPC.PhotoSize size = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, Integer.MAX_VALUE);
-                            TLRPC.PhotoSize thumbSize = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, 800);
+                            TLRPC.PhotoSize thumbSize = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, 2560);
 //                            if (thumbSize != size) {
 //                                imageReceiver.setImage(null, null, ImageLocation.getForPhoto(size, photo), filter, ImageLocation.getForPhoto(thumbSize, photo), filter, thumbDrawable, 0, null, storyItem, 0);
 //                            } else {
@@ -5847,7 +5847,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                 TLRPC.Photo photo = storyItem.media != null ? storyItem.media.photo : null;
                 if (photo != null && photo.sizes != null) {
                     TLRPC.PhotoSize size = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, Integer.MAX_VALUE);
-                    TLRPC.PhotoSize thumbSize = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, 800);
+                    TLRPC.PhotoSize thumbSize = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, 2560);
 //                    if (thumbSize != size) {
 //                        imageReceiver.setImage(ImageLocation.getForPhoto(size, photo), filter, ImageLocation.getForPhoto(thumbSize, photo), filter, null, null, null, 0, null, storyItem, 0);
 //                    } else {
