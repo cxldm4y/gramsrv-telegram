@@ -1134,7 +1134,7 @@
     <string name="AskAQuestion">Задать вопрос</string>
     <string name="AskAQuestionInfo">Пожалуйста, обратите внимание, что в поддержке Send отвечают волонтеры. Мы постараемся помочь как можно быстрее, но ожидание может занять время.
 
-Пожалуйста, ознакомьтесь с &lt;![CDATA[&lt;a href=\"https://telegram.org/faq#general\"&gt;частыми вопросами о Send&lt;/a&gt;]]&gt;: там есть ответ на большинство вопросов и важные советы по &lt;![CDATA[&lt;a href=\"https://telegram.org/faq#troubleshooting\"&gt;устранению неполадок&lt;/a&gt;]]&gt;.</string>
+Пожалуйста, ознакомьтесь с &lt;a href=\"https://telegram.org/faq#general\"&gt;частыми вопросами о Send&lt;/a&gt;: там есть ответ на большинство вопросов и важные советы по &lt;a href=\"https://telegram.org/faq#troubleshooting\"&gt;устранению неполадок&lt;/a&gt;.</string>
     <string name="AskButton">Спросить волонтёров</string>
     <string name="AttachArticle">Статья</string>
     <string name="AttachAudio">Голосовое сообщение</string>
@@ -3320,7 +3320,7 @@
     <string name="ChatsException_few">%1$d чата</string>
     <string name="ChatsException_many">%1$d чатов</string>
     <string name="ChatsException_other">%1$d чатов</string>
-    <string name="ChatsLeaveAlert">&lt;![CDATA[Вы точно хотите покинуть выбранные чаты?]]&gt;</string>
+    <string name="ChatsLeaveAlert">Вы точно хотите покинуть выбранные чаты?</string>
     <string name="ChatsMute">Убрать звук</string>
     <string name="ChatsNearbyHeader">Группы рядом</string>
     <string name="ChatsSelected_one">%1$d чат</string>
@@ -10737,7 +10737,7 @@
     <string name="SendMediaPermissionMusic">Музыки</string>
     <string name="SendMediaPermissionPhotos">Фотографий</string>
     <string name="SendMediaPermissionRound">Видеосообщений</string>
-    <string name="SendMediaPermissionStickersGifs">&lt;![CDATA[Стикеров и GIF]]&gt;</string>
+    <string name="SendMediaPermissionStickersGifs">Стикеров и GIF</string>
     <string name="SendMediaPermissionVideos">Видео</string>
     <string name="SendMediaPermissionVoice">Голосовых сообщений</string>
     <string name="SendMediaPolls">Опросов</string>
