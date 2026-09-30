@@ -6866,6 +6866,10 @@ public class MessagesController extends BaseController implements NotificationCe
         if (oldUser == user && !force) {
             return false;
         }
+        if (oldUser != null && oldUser != user && user.bot && oldUser.bot && oldUser.bot_can_edit && !user.bot_can_edit) {
+            user.bot_can_edit = true;
+            user.flags2 |= 2;
+        }
         if (oldUser != null && !TextUtils.isEmpty(oldUser.username)) {
             objectsByUsernames.remove(oldUser.username.toLowerCase());
         }
