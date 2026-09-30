@@ -212,7 +212,7 @@ public class ProfileStoriesView extends View implements NotificationCenter.Notif
         if (dialogId == 0) {
             userStories = null;
         } else {
-            userStories = userFullStories;
+            userStories = (stateStories != null && stateStories.stories != null && !stateStories.stories.isEmpty()) ? stateStories : userFullStories;
         }
         int max_read_id = 0;
         if (userFullStories != null) {

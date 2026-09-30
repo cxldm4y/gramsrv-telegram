@@ -66,7 +66,7 @@ public class InstantCameraVideoEncoderOverlayHelper {
             GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_S, GLES20.GL_CLAMP_TO_EDGE);
             GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_T, GLES20.GL_CLAMP_TO_EDGE);
 
-            if (i == TEXTURE_INDEX_WATERMARK_LOGO) {
+            if (i == TEXTURE_INDEX_WATERMARK_LOGO && false) {
                 final int logoSize = Math.round(width * 0.2f);
                 final int logoOffset = Math.round(width * 28 / 1536f);
                 final int trueSize = logoSize - logoOffset - logoOffset;
@@ -108,17 +108,17 @@ public class InstantCameraVideoEncoderOverlayHelper {
                 float scale = (float) logoSize / videoWidth;
                 setVertexCords(verData, VERTEX_BUFFER_WATERMARK_TEXT_POSITION, 1f - scale * 2f, -1f + scale * 2f, 1, -1);
 
-                Bitmap bitmap = AndroidUtilities.getBitmapFromRaw(R.raw.round_blur_overlay_text);
-                if (bitmap != null) {
-                    Bitmap sBitmap = Bitmap.createScaledBitmap(bitmap, logoSize, logoSize, true);
-                    Bitmap aBitmap = sBitmap.extractAlpha();
-
-                    GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, aBitmap, 0);
-
-                    aBitmap.recycle();
-                    sBitmap.recycle();
-                    bitmap.recycle();
-                }
+                Bitmap aBitmap = Bitmap.createBitmap(logoSize, logoSize, Bitmap.Config.ALPHA_8);
+                Canvas textCanvas = new Canvas(aBitmap);
+                android.graphics.Paint textPaint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG);
+                textPaint.setColor(0xFFFFFFFF);
+                textPaint.setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.NORMAL));
+                textPaint.setTextSize(logoSize * 0.16f);
+                textPaint.setTextAlign(android.graphics.Paint.Align.RIGHT);
+                final float textPad = logoSize * 0.075f;
+                textCanvas.drawText("Send", logoSize - textPad, logoSize - textPad - textPaint.descent(), textPaint);
+                GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, aBitmap, 0);
+                aBitmap.recycle();
             } else  {
                 GLES20.glTexImage2D(
                         GLES20.GL_TEXTURE_2D,
