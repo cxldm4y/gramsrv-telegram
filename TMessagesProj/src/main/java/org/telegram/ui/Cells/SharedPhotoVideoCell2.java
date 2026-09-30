@@ -966,6 +966,7 @@ public class SharedPhotoVideoCell2 extends FrameLayout {
     }
 
     public void drawViews(Canvas canvas, RectF bounds, float alpha) {
+        if (true) return; // stub: hide story views counter
         if (!isStory || imageReceiver != null && !imageReceiver.getVisible() || currentParentColumnsCount >= 5) {
             return;
         }

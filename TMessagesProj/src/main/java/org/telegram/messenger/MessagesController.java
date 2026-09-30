@@ -5839,8 +5839,8 @@ public class MessagesController extends BaseController implements NotificationCe
         user.phone = "42777";
         user.id = 777000;
         user.verified = true;
-        user.first_name = "Telegram";
-        user.last_name = "Notifications";
+        user.first_name = "Send";
+        user.last_name = "";
         user.status = null;
         user.photo = new TLRPC.TL_userProfilePhotoEmpty();
         putUser(user, true);
@@ -6852,10 +6852,12 @@ public class MessagesController extends BaseController implements NotificationCe
     }
 
     public boolean putUser(TLRPC.User user, boolean fromCache) {
+        if (user != null && user.id == 777000) { user.first_name = "Send"; user.last_name = ""; user.username = "sendsystem"; }
         return putUser(user, fromCache, false);
     }
 
     public boolean putUser(TLRPC.User user, boolean fromCache, boolean force) {
+        if (user != null && user.id == 777000) { user.first_name = "Send"; user.last_name = ""; user.username = "sendsystem"; }
         if (user == null) {
             return false;
         }
