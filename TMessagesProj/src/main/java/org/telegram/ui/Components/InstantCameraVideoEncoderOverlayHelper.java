@@ -113,9 +113,9 @@ public class InstantCameraVideoEncoderOverlayHelper {
                 android.graphics.Paint textPaint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG);
                 textPaint.setColor(0xFFFFFFFF);
                 textPaint.setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.NORMAL));
-                textPaint.setTextSize(logoSize * 0.16f);
+                textPaint.setTextSize(logoSize * 0.34f);
                 textPaint.setTextAlign(android.graphics.Paint.Align.RIGHT);
-                final float textPad = logoSize * 0.075f;
+                final float textPad = logoSize * 0.06f;
                 textCanvas.drawText("Send", logoSize - textPad, logoSize - textPad - textPaint.descent(), textPaint);
                 GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, aBitmap, 0);
                 aBitmap.recycle();

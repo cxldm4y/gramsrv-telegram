@@ -409,6 +409,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     TimerDrawable autoDeleteItemDrawable;
     private ProfileGooeyView avatarGooey;
     private ProfileStoriesView storyView;
+    private long lastStoriesUserFullReload;
     public ProfileGiftsView giftsView;
 
     private View scrimView = null;
@@ -9339,6 +9340,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         } else if (id == NotificationCenter.reloadDialogPhotos) {
             updateProfileData(false);
         } else if (id == NotificationCenter.storiesUpdated || id == NotificationCenter.storiesReadUpdated) {
+            if (id == NotificationCenter.storiesUpdated && userId != 0 && userId != getUserConfig().getClientUserId()) {
+                final long nowMs = System.currentTimeMillis();
+                if (nowMs - lastStoriesUserFullReload > 3000) {
+                    lastStoriesUserFullReload = nowMs;
+                    getMessagesController().loadFullUser(getMessagesController().getUser(userId), classGuid, true);
+                }
+            }
             if (avatarImage != null) {
                 avatarImage.setHasStories(needInsetForStories());
                 updateAvatarRoundRadius();
