@@ -20332,6 +20332,7 @@ public class MessagesController extends BaseController implements NotificationCe
                         getMediaDataController().loadRecents(MediaDataController.TYPE_FAVE, false, false, true);
                     } else if (baseUpdate instanceof TL_update.TL_updateContactsReset) {
                         getContactsController().forceImportContacts();
+                        AndroidUtilities.runOnUIThread(() -> getContactsController().loadContacts(false, 0));
                     } else if (baseUpdate instanceof TL_update.TL_updateNewStickerSet) {
                         TL_update.TL_updateNewStickerSet update = (TL_update.TL_updateNewStickerSet) baseUpdate;
                         getMediaDataController().addNewStickerSet(update.stickerset);

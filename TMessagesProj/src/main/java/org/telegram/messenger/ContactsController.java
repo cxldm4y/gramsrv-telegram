@@ -2393,6 +2393,7 @@ public class ContactsController extends BaseController {
                 }
             }
             getMessagesController().processUpdates(res, false);
+            AndroidUtilities.runOnUIThread(() -> loadContacts(false, 0), 700);
 
             for (int a = 0; a < res.users.size(); a++) {
                 final TLRPC.User u = res.users.get(a);
