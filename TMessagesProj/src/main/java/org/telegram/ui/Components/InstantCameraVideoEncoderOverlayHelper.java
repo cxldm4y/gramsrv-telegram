@@ -106,7 +106,6 @@ public class InstantCameraVideoEncoderOverlayHelper {
             } else if (i == TEXTURE_INDEX_WATERMARK_TEXT || i == TEXTURE_INDEX_WATERMARK_LOGO) {
                 final int logoSize = Math.round(width * 372f / 1536f);
                 float scale = (float) logoSize / videoWidth;
-                setVertexCords(verData, VERTEX_BUFFER_WATERMARK_TEXT_POSITION, 1f - scale * 2f, -1f + scale * 2f, 1, -1);
 
                 Bitmap aBitmap = Bitmap.createBitmap(logoSize, logoSize, Bitmap.Config.ALPHA_8);
                 GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, aBitmap, 0);
