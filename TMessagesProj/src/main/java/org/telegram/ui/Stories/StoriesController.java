@@ -1041,7 +1041,7 @@ public class StoriesController {
 
     HashSet<Long> allStoriesLoading = new HashSet<>();
 
-    private void loadAllStoriesForDialog(long user_id) {
+    public void loadAllStoriesForDialog(long user_id) {
         if (allStoriesLoading.contains(user_id)) {
             return;
         }

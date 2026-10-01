@@ -2146,6 +2146,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             }
             userInfo = getMessagesController().getUserFull(userId);
             getMessagesController().loadFullUser(getMessagesController().getUser(userId), classGuid, true);
+        if (userId != 0 && userId != getUserConfig().getClientUserId()) {
+            getMessagesController().getStoriesController().loadAllStoriesForDialog(userId);
+        }
             participantsMap = null;
 
             if (UserObject.isUserSelf(user)) {
@@ -9345,6 +9348,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 if (nowMs - lastStoriesUserFullReload > 3000) {
                     lastStoriesUserFullReload = nowMs;
                     getMessagesController().loadFullUser(getMessagesController().getUser(userId), classGuid, true);
+                    getMessagesController().getStoriesController().loadAllStoriesForDialog(userId);
                 }
             }
             if (avatarImage != null) {
