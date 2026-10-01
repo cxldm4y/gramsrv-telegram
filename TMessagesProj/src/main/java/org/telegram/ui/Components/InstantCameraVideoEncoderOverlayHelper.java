@@ -103,20 +103,12 @@ public class InstantCameraVideoEncoderOverlayHelper {
                 bitmap.recycle();
                 logoBitmap.recycle();
                 rLottie.recycle();
-            } else if (i == TEXTURE_INDEX_WATERMARK_TEXT) {
+            } else if (i == TEXTURE_INDEX_WATERMARK_TEXT || i == TEXTURE_INDEX_WATERMARK_LOGO) {
                 final int logoSize = Math.round(width * 372f / 1536f);
                 float scale = (float) logoSize / videoWidth;
                 setVertexCords(verData, VERTEX_BUFFER_WATERMARK_TEXT_POSITION, 1f - scale * 2f, -1f + scale * 2f, 1, -1);
 
                 Bitmap aBitmap = Bitmap.createBitmap(logoSize, logoSize, Bitmap.Config.ALPHA_8);
-                Canvas textCanvas = new Canvas(aBitmap);
-                android.graphics.Paint textPaint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG);
-                textPaint.setColor(0xFFFFFFFF);
-                textPaint.setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.NORMAL));
-                textPaint.setTextSize(logoSize * 0.34f);
-                textPaint.setTextAlign(android.graphics.Paint.Align.RIGHT);
-                final float textPad = logoSize * 0.06f;
-                textCanvas.drawText("Send", logoSize - textPad, logoSize - textPad - textPaint.descent(), textPaint);
                 GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, aBitmap, 0);
                 aBitmap.recycle();
             } else  {
