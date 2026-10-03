@@ -168,6 +168,12 @@ public class BotStarsController {
         if (update == null) return;
         long dialogId = DialogObject.getPeerDialogId(update.peer);
         if (dialogId < 0) {
+            TLRPC.TL_payments_starsRevenueStats cachedChannelStats = botStarsStats.get(dialogId);
+            if (cachedChannelStats != null && update.status != null) {
+                cachedChannelStats.status = update.status;
+            }
+            lastLoadedBotStarsStats.put(dialogId, System.currentTimeMillis());
+            NotificationCenter.getInstance(currentAccount).postNotificationName(NotificationCenter.botStarsUpdated, dialogId);
             if (ChannelMonetizationLayout.instance != null && ChannelMonetizationLayout.instance.dialogId == DialogObject.getPeerDialogId(update.peer)) {
                 ChannelMonetizationLayout.instance.setupBalances(update.status.current_balance instanceof TL_stars.TL_starsTonAmount, update.status);
                 ChannelMonetizationLayout.instance.reloadTransactions();
