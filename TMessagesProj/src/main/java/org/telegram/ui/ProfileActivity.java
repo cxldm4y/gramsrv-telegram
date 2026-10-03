@@ -12213,7 +12213,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             TLRPC.Chat chat = getMessagesController().getChat(chatId);
             hasVoiceChatItem = false;
 
-            if (topicId == 0 && ChatObject.canChangeChatInfo(chat)) {
+            if (topicId == 0 && ChatObject.canChangeChatInfo(chat) && (!ChatObject.isChannel(chat) || chat.megagroup || chat.creator || ChatObject.hasAdminRights(chat))) {
                 createAutoDeleteItem(context);
             }
             if (ChatObject.isChannel(chat)) {

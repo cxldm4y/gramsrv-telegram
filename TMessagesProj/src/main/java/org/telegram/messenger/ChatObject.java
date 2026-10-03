@@ -2284,6 +2284,9 @@ public class ChatObject {
     }
 
     public static boolean canPinMessages(TLRPC.Chat chat) {
+        if (chat != null && ChatObject.isChannel(chat) && !chat.megagroup) {
+            return chat.creator || chat.admin_rights != null && (chat.admin_rights.pin_messages || chat.admin_rights.edit_messages);
+        }
         return (canUserDoAction(chat, ACTION_PIN) || ChatObject.isChannel(chat) && !chat.megagroup && chat.admin_rights != null && chat.admin_rights.edit_messages);
     }
 
