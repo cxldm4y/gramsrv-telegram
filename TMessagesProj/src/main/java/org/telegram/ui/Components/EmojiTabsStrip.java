@@ -1301,7 +1301,7 @@ public class EmojiTabsStrip extends ScrollableHorizontalScrollView {
                     if (setObject != null) {
                         imageView.setImage(ImageLocation.getForStickerSet(setObject.set), "24_24", null, null, setObject);
                         if (setObject.needLoadSet != null) {
-                            MediaDataController.getInstance(UserConfig.selectedAccount).getStickerSet(setObject.needLoadSet, false);
+                            MediaDataController.getInstance(UserConfig.selectedAccount).getStickerSet(setObject.needLoadSet, (Integer) null, false, needLoadedSetCb -> {});
                             setObject.needLoadSet = null;
                         }
                     }

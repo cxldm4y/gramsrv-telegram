@@ -2618,7 +2618,7 @@ public class SelectAnimatedEmojiDialog extends FrameLayout implements Notificati
                 if (index >= 0) {
                     EmojiView.EmojiPack pack = packs.get(index);
                     if (pack.needLoadSet != null) {
-                        MediaDataController.getInstance(currentAccount).getStickerSet(pack.needLoadSet, false);
+                        MediaDataController.getInstance(currentAccount).getStickerSet(pack.needLoadSet, (Integer) null, false, needLoadedSetCb -> {});
                         pack.needLoadSet = null;
                     }
                     boolean lock = false;

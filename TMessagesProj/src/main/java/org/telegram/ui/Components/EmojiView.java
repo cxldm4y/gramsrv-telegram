@@ -7450,7 +7450,7 @@ public class EmojiView extends FrameLayout implements
                     EmojiPack before = a - 1 >= 0 ? emojipacksProcessed.get(a - 1) : null;
                     boolean divider = pack2 != null && pack2.featured && !(before != null && !before.free && before.installed && !UserConfig.getInstance(currentAccount).isPremium());
                     if (pack2 != null && pack2.needLoadSet != null) {
-                        MediaDataController.getInstance(currentAccount).getStickerSet(pack2.needLoadSet, false);
+                        MediaDataController.getInstance(currentAccount).getStickerSet(pack2.needLoadSet, (Integer) null, false, needLoadedSetCb -> {});
                         pack2.needLoadSet = null;
                     }
                     header.setStickerSet(pack2, divider);
