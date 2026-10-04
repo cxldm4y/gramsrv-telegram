@@ -1795,7 +1795,7 @@ public class GiftSheet extends BottomSheetWithRecyclerListView implements Notifi
             final boolean unique = userGift.gift instanceof TL_stars.TL_starGiftUnique;
             avatarView.setColorFilter(null);
             avatarView.setLayoutParams(avatarViewLayout1);
-            if (unique && userGift.name_hidden) {
+            if (unique) {
                 avatarView.setVisibility(View.GONE);
             } else if (userGift.name_hidden) {
                 avatarView.setVisibility(View.VISIBLE);
@@ -1888,7 +1888,7 @@ public class GiftSheet extends BottomSheetWithRecyclerListView implements Notifi
             this.inCollection = inCollection;
             title = null;
             subtitle = null;
-            setPinned(userGift.pinned_to_top && !(unique && !userGift.name_hidden), oldUserGift == userGift);
+            setPinned(userGift.pinned_to_top, oldUserGift == userGift);
             updateRibbonText();
 
             return oldUserGift == userGift;
