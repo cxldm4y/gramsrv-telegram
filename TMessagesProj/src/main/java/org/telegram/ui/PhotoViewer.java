@@ -10728,7 +10728,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         } else if (savedLooping != null) {
             playerLooping = savedLooping;
         } else {
-            playerLooping = (currentMessageObject != null && currentMessageObject.getDuration() <= 30) || (pageBlocksAdapter != null && pageBlocksAdapter.isHardwarePlayer(currentIndex));
+            playerLooping = !(currentMessageObject != null && currentMessageObject.isSecretMedia()) && ((currentMessageObject != null && currentMessageObject.getDuration() <= 30) || (pageBlocksAdapter != null && pageBlocksAdapter.isHardwarePlayer(currentIndex)));
         }
         videoPlayerControlFrameLayout.setSeekBarTransitionEnabled(playerLooping);
         videoPlayer.setLooping(playerLooping);
