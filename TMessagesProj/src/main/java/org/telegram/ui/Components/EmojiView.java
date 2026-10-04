@@ -3992,7 +3992,7 @@ public class EmojiView extends FrameLayout implements
                 TLRPC.TL_messages_stickerSet stickerSet = MediaDataController.getInstance(currentAccount).getStickerSet(inputStickerSetID, true);
                 if (stickerSet == null || stickerSet.set == null) {
                     NotificationCenter.getInstance(currentAccount).addObserver(this, NotificationCenter.groupStickersDidLoad);
-                    MediaDataController.getInstance(currentAccount).getStickerSet(toInstall = inputStickerSetID, false);
+                    MediaDataController.getInstance(currentAccount).getStickerSet(toInstall = inputStickerSetID, (Integer) null, false, loadedSet -> {});
                 } else {
                     install(stickerSet);
                 }
@@ -4028,7 +4028,7 @@ public class EmojiView extends FrameLayout implements
                 TLRPC.TL_messages_stickerSet stickerSet = MediaDataController.getInstance(currentAccount).getStickerSet(inputStickerSetID, true);
                 if (stickerSet == null || stickerSet.set == null) {
                     NotificationCenter.getInstance(currentAccount).addObserver(this, NotificationCenter.groupStickersDidLoad);
-                    MediaDataController.getInstance(currentAccount).getStickerSet(toUninstall = inputStickerSetID, false);
+                    MediaDataController.getInstance(currentAccount).getStickerSet(toUninstall = inputStickerSetID, (Integer) null, false, loadedSet -> {});
                 } else {
                     uninstall(stickerSet);
                 }
