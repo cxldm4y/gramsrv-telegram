@@ -1285,6 +1285,9 @@ public class PremiumPreviewFragment extends BaseFragment implements Notification
     }
 
     public static String getPremiumButtonText(int currentAccount, SubscriptionTier tier) {
+        if (true) {
+            return getString(R.string.SubscribeToPremiumSimple);
+        }
         if (BuildVars.IS_BILLING_UNAVAILABLE) {
             return getString(R.string.SubscribeToPremiumNotAvailable);
         }
@@ -2122,13 +2125,14 @@ public class PremiumPreviewFragment extends BaseFragment implements Notification
         if (LocaleController.isRTL) {
             animated = false;
         }
+        premiumButtonView.setButton(getString(R.string.SubscribeToPremiumSimple), null, animated);
         if (BuildVars.IS_BILLING_UNAVAILABLE && selectedTierIndex < subscriptionTiers.size()) {
             premiumButtonView.setButton(getPremiumButtonText(currentAccount, subscriptionTiers.get(selectedTierIndex)), null, animated);
             buttonContainerInternal.setOnClickListener(v -> buyPremium(this));
             return;
         }
         if (!BuildVars.useInvoiceBilling() && (!BillingController.getInstance().isReady() || subscriptionTiers.isEmpty() || selectedTierIndex >= subscriptionTiers.size() || subscriptionTiers.get(selectedTierIndex).googlePlayProductDetails == null)) {
-            premiumButtonView.setButton(getString(R.string.Loading), null, animated);
+            premiumButtonView.setButton(getString(R.string.SubscribeToPremiumSimple), null, animated);
             buttonContainerInternal.setOnClickListener(v -> {});
             premiumButtonView.setFlickerDisabled(true);
             return;

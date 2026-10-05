@@ -13931,4 +13931,5 @@ Send до последней версии</string>
     <string name="messages_many">%1$d сообщений</string>
     <string name="messages_other">%1$d сообщений</string>
     <string name="telegram_passport">Send Passport</string>
+    <string name="SubscribeToPremiumSimple">Подключить Send Premium</string>
 </resources>
