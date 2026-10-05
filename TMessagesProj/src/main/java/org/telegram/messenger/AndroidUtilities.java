@@ -4250,7 +4250,20 @@ public class AndroidUtilities {
                     if (activity == null) {
                         return;
                     }
-                    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                    
+        try {
+            java.io.File fbFile = org.telegram.messenger.FileLoader.getInstance(org.telegram.messenger.UserConfig.selectedAccount).getPathToMessage(message.messageOwner);
+            if (fbFile != null && fbFile.exists() && message.type != MessageObject.TYPE_VIDEO) {
+                android.net.Uri fbUri = androidx.core.content.FileProvider.getUriForFile(activity, org.telegram.messenger.ApplicationLoader.getApplicationId() + ".provider", fbFile);
+                android.content.Intent fbSend = new android.content.Intent(android.content.Intent.ACTION_SEND);
+                fbSend.setType("*/*");
+                fbSend.putExtra(android.content.Intent.EXTRA_STREAM, fbUri);
+                fbSend.addFlags(android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                activity.startActivity(android.content.Intent.createChooser(fbSend, "Открыть с помощью"));
+                return;
+            }
+        } catch (Throwable fbIgnored) {}
+AlertDialog.Builder builder = new AlertDialog.Builder(activity);
                     Map<String, Integer> colorsReplacement = new HashMap<>();
                     colorsReplacement.put("info1", parentFragment.getThemedColor(Theme.key_dialogTopBackground));
                     colorsReplacement.put("info2", parentFragment.getThemedColor(Theme.key_dialogTopBackground));

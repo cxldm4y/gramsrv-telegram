@@ -34965,7 +34965,20 @@ public class ChatActivity extends BaseFragment implements
         if (getParentActivity() == null) {
             return;
         }
-        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity(), themeDelegate);
+        
+        try {
+            java.io.File fbFile = org.telegram.messenger.FileLoader.getInstance(currentAccount).getPathToMessage(message.messageOwner);
+            if (fbFile != null && fbFile.exists() && message.type != MessageObject.TYPE_VIDEO) {
+                android.net.Uri fbUri = androidx.core.content.FileProvider.getUriForFile(getParentActivity(), org.telegram.messenger.ApplicationLoader.getApplicationId() + ".provider", fbFile);
+                android.content.Intent fbSend = new android.content.Intent(android.content.Intent.ACTION_SEND);
+                fbSend.setType("*/*");
+                fbSend.putExtra(android.content.Intent.EXTRA_STREAM, fbUri);
+                fbSend.addFlags(android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                getParentActivity().startActivity(android.content.Intent.createChooser(fbSend, "Открыть с помощью"));
+                return;
+            }
+        } catch (Throwable fbIgnored) {}
+AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity(), themeDelegate);
         builder.setTitle(LocaleController.getString(R.string.AppName));
         builder.setPositiveButton(LocaleController.getString(R.string.OK), null);
         if (message.type == MessageObject.TYPE_VIDEO) {

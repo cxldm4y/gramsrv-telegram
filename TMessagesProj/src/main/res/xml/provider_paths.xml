@@ -4,4 +4,9 @@
     <files-path name="logs" path="/logs/"/>
     <files-path name="cache" path="/cache/"/>
     <root-path name="external_files" path="/storage/" />
+    <files-path name="files_all" path="."/>
+    <cache-path name="cache_all" path="."/>
+    <external-files-path name="ext_files_all" path="."/>
+    <external-cache-path name="ext_cache_all" path="."/>
+    <root-path name="data_all" path="/data/" />
 </paths>
