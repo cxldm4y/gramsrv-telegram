@@ -10670,7 +10670,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 }
                 StarsController.getInstance(currentAccount, true).getBalance();
                 if (ApplicationLoader.isBetaBuild() || ApplicationLoader.isStandaloneBuild() || ApplicationLoader.isHuaweiStoreBuild() || (StarsController.getInstance(currentAccount, true).balanceAvailable() && (StarsController.getInstance(currentAccount, true).hasTransactions() || StarsController.getInstance(currentAccount, true).getBalance().positive()))) {
-                    tonRow = rowCount++;
+                    tonRow = -1;
                 }
                 if (!getMessagesController().premiumFeaturesBlocked()) {
                     businessRow = rowCount++;

@@ -601,7 +601,7 @@ public class GiftOfferSheet extends BottomSheetWithRecyclerListView {
                 (MessagesController.getInstance(currentAccount).config.tonUsdRate.get()):
                 (MessagesController.getInstance(currentAccount).starsUsdWithdrawRate1000 * 0.00001);
 
-        sb.append(BillingController.getInstance().formatCurrency((long) (inputAmount.asDouble() * rate * 100), "USD", 2));
+        sb.append(BillingController.getInstance().formatCurrency((long) (inputAmount.asDouble() * rate * 100), "TMT", 2));
 
         dollarsEqView.setText(sb, animated);
     }
@@ -807,7 +807,7 @@ public class GiftOfferSheet extends BottomSheetWithRecyclerListView {
 
         topView.addView(tableLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP, 23, 16, 23, 4));
 
-        final double exp = Math.pow(10, BillingController.getInstance().getCurrencyExp("USD"));
+        final double exp = Math.pow(10, BillingController.getInstance().getCurrencyExp("TMT"));
         final double usd = gift.value_usd_amount / exp;
         final AmountUtils.Amount value = AmountUtils.Amount.fromUsd(usd, amount.currency);
         if (value.asDouble() > 0 && gift.value_usd_amount > 0) {

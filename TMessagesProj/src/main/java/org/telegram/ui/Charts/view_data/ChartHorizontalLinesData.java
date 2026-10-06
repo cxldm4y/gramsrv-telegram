@@ -138,7 +138,7 @@ public class ChartHorizontalLinesData {
     public CharSequence format(int a, TextPaint paint, long v, int formatter) {
         if (formatter == ChartData.FORMATTER_TON) {
             if (a == 1) {
-                return "≈" + BillingController.getInstance().formatCurrency(v, "USD");
+                return "≈" + BillingController.getInstance().formatCurrency(v, "TMT");
             }
             if (formatterTON == null) {
                 DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
@@ -152,7 +152,7 @@ public class ChartHorizontalLinesData {
             return ChannelMonetizationLayout.replaceTON("TON " + formatterTON.format(v / 1_000_000_000.0), paint, .8f, -dp(.66f), false);
         } else if (formatter == ChartData.FORMATTER_XTR) {
             if (a == 1) {
-                return "≈" + BillingController.getInstance().formatCurrency(v, "USD");
+                return "≈" + BillingController.getInstance().formatCurrency(v, "TMT");
             }
             return StarsIntroActivity.replaceStarsWithPlain("XTR " + LocaleController.formatNumber(v, ' '), .65f);
         }

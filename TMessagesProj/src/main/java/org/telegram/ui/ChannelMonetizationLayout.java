@@ -673,7 +673,7 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
             ssb.setSpan(balanceTitleSizeSpan, index, ssb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         balanceTitle.setText(ssb);
-        balanceSubtitle.setText("≈" + BillingController.getInstance().formatCurrency(amount, "USD"));
+        balanceSubtitle.setText("≈" + BillingController.getInstance().formatCurrency(amount, "TMT"));
     }
 
     private void setStarsBalance(TL_stars.StarsAmount amount, int blockedUntil) {
@@ -687,7 +687,7 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
         }
         starsBalance = amount;
         starsBalanceTitle.setText(ssb);
-        starsBalanceSubtitle.setText("≈" + BillingController.getInstance().formatCurrency((long) (stars_rate * amount.amount * 100.0), "USD"));
+        starsBalanceSubtitle.setText("≈" + BillingController.getInstance().formatCurrency((long) (stars_rate * amount.amount * 100.0), "TMT"));
         starsBalanceEditTextContainer.setVisibility(amount.amount > 0 ? VISIBLE : GONE);
         if (starsBalanceEditTextAll) {
             starsBalanceEditTextIgnore = true;
@@ -819,15 +819,15 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
             availableValue.crypto_amount = balances.available_balance.amount;
             availableValue.amount = (long) (availableValue.crypto_amount / 1_000_000_000.0 * ton_rate * 100.0);
             setBalance(availableValue.crypto_amount, availableValue.amount);
-            availableValue.currency = "USD";
+            availableValue.currency = "TMT";
             lastWithdrawalValue.contains1 = true;
             lastWithdrawalValue.crypto_amount = balances.current_balance.amount;
             lastWithdrawalValue.amount = (long) (lastWithdrawalValue.crypto_amount / 1_000_000_000.0 * ton_rate * 100.0);
-            lastWithdrawalValue.currency = "USD";
+            lastWithdrawalValue.currency = "TMT";
             lifetimeValue.contains1 = true;
             lifetimeValue.crypto_amount = balances.overall_revenue.amount;
             lifetimeValue.amount = (long) (lifetimeValue.crypto_amount / 1_000_000_000.0 * ton_rate * 100.0);
-            lifetimeValue.currency = "USD";
+            lifetimeValue.currency = "TMT";
             proceedsAvailable = true;
             balanceButton.setVisibility(balances.available_balance.amount > 0 && balances.withdrawal_enabled ? View.VISIBLE : View.GONE);
         } else {
@@ -838,15 +838,15 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
             availableValue.crypto_amount2 = balances.available_balance;
             availableValue.amount2 = (long) (availableValue.crypto_amount2.amount * stars_rate * 100.0);
             setStarsBalance(availableValue.crypto_amount2, balances.next_withdrawal_at);
-            availableValue.currency = "USD";
+            availableValue.currency = "TMT";
             lastWithdrawalValue.contains2 = true;
             lastWithdrawalValue.crypto_amount2 = balances.current_balance;
             lastWithdrawalValue.amount2 = (long) (lastWithdrawalValue.crypto_amount2.amount * stars_rate * 100.0);
-            lastWithdrawalValue.currency = "USD";
+            lastWithdrawalValue.currency = "TMT";
             lifetimeValue.contains2 = true;
             lifetimeValue.crypto_amount2 = balances.overall_revenue;
             lifetimeValue.amount2 = (long) (lifetimeValue.crypto_amount2.amount * stars_rate * 100.0);
-            lifetimeValue.currency = "USD";
+            lifetimeValue.currency = "TMT";
             proceedsAvailable = true;
             if (starsBalanceButtonsLayout != null) {
                 starsBalanceButtonsLayout.setVisibility(balances.withdrawal_enabled ? View.VISIBLE : View.GONE);

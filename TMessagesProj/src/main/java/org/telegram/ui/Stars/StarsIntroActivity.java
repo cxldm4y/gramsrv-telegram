@@ -5225,7 +5225,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
                     subPriceView.setText("");
                 } else {
                     subPriceView.animate().alpha(1f).start();
-                    subPriceView.setText("≈" + BillingController.getInstance().formatCurrency((long) (input_stars / 1000.0 * MessagesController.getInstance(UserConfig.selectedAccount).starsUsdWithdrawRate1000), "USD"));
+                    subPriceView.setText("≈" + BillingController.getInstance().formatCurrency((long) (input_stars / 1000.0 * MessagesController.getInstance(UserConfig.selectedAccount).starsUsdWithdrawRate1000), "TMT"));
                 }
             }
         });
@@ -5407,7 +5407,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
 
         editText.setText(Long.toString(amount));
         dollarsView.setAlpha(1.0f);
-        dollarsView.setText("≈" + BillingController.getInstance().formatCurrency((long) (amount * (commission / 1000.0f) / 1000.0 * MessagesController.getInstance(UserConfig.selectedAccount).starsUsdWithdrawRate1000), "USD"));
+        dollarsView.setText("≈" + BillingController.getInstance().formatCurrency((long) (amount * (commission / 1000.0f) / 1000.0 * MessagesController.getInstance(UserConfig.selectedAccount).starsUsdWithdrawRate1000), "TMT"));
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -5455,7 +5455,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
                     dollarsView.setText("");
                 } else {
                     dollarsView.animate().alpha(1f).start();
-                    dollarsView.setText("≈" + BillingController.getInstance().formatCurrency((long) (input_stars * (commission / 1000.0f) / 1000.0 * MessagesController.getInstance(UserConfig.selectedAccount).starsUsdWithdrawRate1000), "USD"));
+                    dollarsView.setText("≈" + BillingController.getInstance().formatCurrency((long) (input_stars * (commission / 1000.0f) / 1000.0 * MessagesController.getInstance(UserConfig.selectedAccount).starsUsdWithdrawRate1000), "TMT"));
                 }
             }
         });

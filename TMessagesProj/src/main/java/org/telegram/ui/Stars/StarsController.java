@@ -240,6 +240,7 @@ public class StarsController {
     }
 
     public boolean canUseTon() {
+        if (true) return false;
         if (!ton) {
             return false;
         }

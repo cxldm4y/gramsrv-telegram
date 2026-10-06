@@ -250,13 +250,13 @@ public class LegendSignatureView extends FrameLayout {
                 formatterTON.setMaximumFractionDigits(v > 1_000_000_000 ? 2 : 6);
                 return ChannelMonetizationLayout.replaceTON("TON " + formatterTON.format(v / 1_000_000_000.), textView.getPaint(), .82f, false);
             } else {
-                return "≈" + BillingController.getInstance().formatCurrency((long) (v / k), "USD");
+                return "≈" + BillingController.getInstance().formatCurrency((long) (v / k), "TMT");
             }
         } else if (formatter == ChartData.FORMATTER_XTR) {
             if (formatterIndex == 0) {
                 return StarsIntroActivity.replaceStarsWithPlain("XTR " + LocaleController.formatNumber(v, ' '), .7f);
             } else {
-                return "≈" + BillingController.getInstance().formatCurrency((long) (v / k), "USD");
+                return "≈" + BillingController.getInstance().formatCurrency((long) (v / k), "TMT");
             }
         }
         float num_ = v;

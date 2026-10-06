@@ -1199,7 +1199,7 @@ public class LinkManager {
         }
 
         if ("ton".equalsIgnoreCase(first)) {
-            presentFragment(new TONIntroActivity());
+            
             return true;
         }
 

@@ -6476,7 +6476,7 @@
     <string name="GroupMessagesChargePrice">Сообщения за звёзды</string>
     <string name="GroupMessagesChargePriceInfo">Включите, чтобы обычные участники группы могли отправлять сообщения только за звёзды.</string>
     <string name="GroupMessagesPriceHeader">Стоимость одного сообщения</string>
-    <string name="GroupMessagesPriceInfo">Группа получит %1$s от выбранной суммы (~%2$s$) за каждое сообщение от участников.</string>
+    <string name="GroupMessagesPriceInfo">Группа получит %1$s от выбранной суммы (~%2$s TMT) за каждое сообщение от участников.</string>
     <string name="GroupName">Название группы</string>
     <string name="GroupNeedBoostsAlreadyBoostedDescriptionLevel1">Группе нужно собрать голоса (%s), чтобы публиковать истории.</string>
     <string name="GroupNeedBoostsDescription">Вашей группе осталось собрать %s, чтобы публиковать истории.

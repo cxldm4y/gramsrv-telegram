@@ -2717,7 +2717,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                         if (progress != null) {
                                             progress.end();
                                         }
-                                        presentFragment(new TONIntroActivity());
+                                        
                                         return pushOpened;
                                     } else if (url.startsWith("tg:stars") || url.startsWith("tg://stars")) {
                                         if (progress != null) {

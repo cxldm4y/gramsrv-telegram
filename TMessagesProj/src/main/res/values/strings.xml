@@ -9566,7 +9566,7 @@
     <string name="GroupMessagesChargePrice">Charge Stars for Messages</string>
     <string name="GroupMessagesChargePriceInfo">If you turn this on, regular members of the group will have to pay Stars to send messages.</string>
     <string name="GroupMessagesPriceHeader">Set price per message</string>
-    <string name="GroupMessagesPriceInfo">Your group will receive %1$s of the selected fee (~%2$s$) for each incoming message.</string>
+    <string name="GroupMessagesPriceInfo">Your group will receive %1$s of the selected fee (~%2$s TMT) for each incoming message.</string>
     <string name="PrivateMessagesChargePrice">Charge for Messages</string>
     <string name="PrivateMessagesChargePriceInfo">Charge a fee for messages from people outside your contacts or those you haven\'t messaged first.</string>
     <string name="PrivateMessagesPriceHeader">Set your price per message</string>

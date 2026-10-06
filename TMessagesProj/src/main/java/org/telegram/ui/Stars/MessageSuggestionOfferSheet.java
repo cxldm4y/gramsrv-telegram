@@ -574,7 +574,7 @@ public class MessageSuggestionOfferSheet extends BottomSheet {
                 (MessagesController.getInstance(currentAccount).config.tonUsdRate.get()):
                 (MessagesController.getInstance(currentAccount).starsUsdWithdrawRate1000 * 0.00001);
 
-        sb.append(BillingController.getInstance().formatCurrency((long) (inputAmount.asDouble() * rate * 100), "USD", 2));
+        sb.append(BillingController.getInstance().formatCurrency((long) (inputAmount.asDouble() * rate * 100), "TMT", 2));
 
         dollarsEqView.setText(sb, animated);
     }

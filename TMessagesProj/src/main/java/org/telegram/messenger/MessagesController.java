@@ -1792,8 +1792,8 @@ public class MessagesController extends BaseController implements NotificationCe
         stargiftsBlocked = mainPreferences.getBoolean("stargiftsBlocked", true); // !BuildVars.DEBUG_VERSION);
         starsPaidReactionAmountMax = mainPreferences.getLong("starsPaidReactionAmountMax", 10_000L);
         starsSubscriptionAmountMax = mainPreferences.getLong("starsSubscriptionAmountMax", 2500L);
-        starsUsdSellRate1000 = mainPreferences.getFloat("starsUsdSellRate1000", 2000);
-        starsUsdWithdrawRate1000 = mainPreferences.getFloat("starsUsdWithdrawRate1000", 1200);
+        starsUsdSellRate1000 = mainPreferences.getFloat("starsUsdSellRate1000", 14000);
+        starsUsdWithdrawRate1000 = mainPreferences.getFloat("starsUsdWithdrawRate1000", 14000);
         sponsoredLinksInappAllow = mainPreferences.getBoolean("sponsoredLinksInappAllow", false);
         starrefProgramAllowed = mainPreferences.getBoolean("starrefProgramAllowed", false);
         starrefConnectAllowed = mainPreferences.getBoolean("starrefConnectAllowed", false);

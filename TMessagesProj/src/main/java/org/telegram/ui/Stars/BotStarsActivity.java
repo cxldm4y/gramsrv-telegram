@@ -473,20 +473,20 @@ public class BotStarsActivity extends BaseFragment implements NotificationCenter
                 availableValue.contains2 = true;
                 availableValue.crypto_amount2 = stats.status.available_balance;
                 availableValue.crypto_currency2 = "XTR";
-                availableValue.currency = "USD";
+                availableValue.currency = "TMT";
                 availableValue.amount2 = (long) (stats.status.available_balance.amount * rate * 100.0);
                 totalValue.contains1 = false;
                 totalValue.contains2 = true;
                 totalValue.crypto_amount2 = stats.status.current_balance;
                 totalValue.crypto_currency2 = "XTR";
                 totalValue.amount2 = (long) (stats.status.current_balance.amount * rate * 100.0);
-                totalValue.currency = "USD";
+                totalValue.currency = "TMT";
                 totalProceedsValue.contains1 = false;
                 totalProceedsValue.contains2 = true;
                 totalProceedsValue.crypto_amount2 = stats.status.overall_revenue;
                 totalProceedsValue.crypto_currency2 = "XTR";
                 totalProceedsValue.amount2 = (long) (stats.status.overall_revenue.amount * rate * 100.0);
-                totalProceedsValue.currency = "USD";
+                totalProceedsValue.currency = "TMT";
                 setStarsBalance(stats.status.available_balance, stats.status.next_withdrawal_at);
 
                 balanceButtonsLayout.setVisibility(stats.status.withdrawal_enabled ? View.VISIBLE : View.GONE);
@@ -540,14 +540,14 @@ public class BotStarsActivity extends BaseFragment implements NotificationCenter
                 tonAvailableValue.crypto_amount = stats.status.available_balance.amount;
                 tonAvailableValue.amount = (long) (tonAvailableValue.crypto_amount / 1_000_000_000.0 * ton_rate * 100.0);
                 setBalance(tonAvailableValue.crypto_amount, tonAvailableValue.amount);
-                tonAvailableValue.currency = "USD";
+                tonAvailableValue.currency = "TMT";
                 tonLastWithdrawalValue.crypto_amount = stats.status.current_balance.amount;
                 tonLastWithdrawalValue.amount = (long) (tonLastWithdrawalValue.crypto_amount / 1_000_000_000.0 * ton_rate * 100.0);
-                tonLastWithdrawalValue.currency = "USD";
+                tonLastWithdrawalValue.currency = "TMT";
                 tonLifetimeValue.contains1 = true;
                 tonLifetimeValue.crypto_amount = stats.status.overall_revenue.amount;
                 tonLifetimeValue.amount = (long) (tonLifetimeValue.crypto_amount / 1_000_000_000.0 * ton_rate * 100.0);
-                tonLifetimeValue.currency = "USD";
+                tonLifetimeValue.currency = "TMT";
                 proceedsAvailable = true;
                 tonBalanceButton.setVisibility(stats.status.available_balance.amount > 0 && stats.status.withdrawal_enabled ? View.VISIBLE : View.GONE);
             }
@@ -649,7 +649,7 @@ public class BotStarsActivity extends BaseFragment implements NotificationCenter
             ssb.setSpan(balanceTitleSizeSpan, index, ssb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         balanceTitle.setText(ssb);
-        balanceSubtitle.setText("≈" + BillingController.getInstance().formatCurrency(amount, "USD"));
+        balanceSubtitle.setText("≈" + BillingController.getInstance().formatCurrency(amount, "TMT"));
         balanceEditTextContainer.setVisibility(amount > 0 ? View.VISIBLE : View.GONE);
         if (balanceEditTextAll) {
             balanceEditTextIgnore = true;
@@ -682,7 +682,7 @@ public class BotStarsActivity extends BaseFragment implements NotificationCenter
             ssb.setSpan(tonBalanceTitleSizeSpan, index, ssb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         tonBalanceTitle.setText(ssb);
-        tonBalanceSubtitle.setText("≈" + BillingController.getInstance().formatCurrency(amount, "USD"));
+        tonBalanceSubtitle.setText("≈" + BillingController.getInstance().formatCurrency(amount, "TMT"));
     }
 
     private SpannableStringBuilder lock;
