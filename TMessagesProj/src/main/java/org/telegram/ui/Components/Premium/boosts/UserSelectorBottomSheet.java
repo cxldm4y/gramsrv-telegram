@@ -904,7 +904,7 @@ public class UserSelectorBottomSheet extends BottomSheetWithRecyclerListView imp
                 }
             }
         } else {
-            if (includeTonOption && type == TYPE_TRANSFER) {
+            if (false && includeTonOption && type == TYPE_TRANSFER) {
                 if (tonIcon == null) {
                     final CombinedDrawable icon = new CombinedDrawable(
                         Theme.createCircleDrawable(dp(46), Theme.getColor(Theme.key_featuredStickers_addButton, resourcesProvider)),
