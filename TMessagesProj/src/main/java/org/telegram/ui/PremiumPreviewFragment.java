@@ -2126,6 +2126,7 @@ public class PremiumPreviewFragment extends BaseFragment implements Notification
             animated = false;
         }
         premiumButtonView.setButton(getString(R.string.SubscribeToPremiumSimple), null, animated);
+        buttonContainerInternal.setOnClickListener(v -> buyPremium(this));
         if (BuildVars.IS_BILLING_UNAVAILABLE && selectedTierIndex < subscriptionTiers.size()) {
             premiumButtonView.setButton(getPremiumButtonText(currentAccount, subscriptionTiers.get(selectedTierIndex)), null, animated);
             buttonContainerInternal.setOnClickListener(v -> buyPremium(this));
