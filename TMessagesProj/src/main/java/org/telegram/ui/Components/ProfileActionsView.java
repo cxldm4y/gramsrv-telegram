@@ -731,8 +731,8 @@ public class ProfileActionsView extends View {
                     insertIfNotAvailable(out, KEY_STREAM, KEY_VOICE_CHAT);
                 }
                 insertIfAvailable(out, KEY_NOTIFICATION);
+                insertIfAvailable(out, KEY_DISCUSS);
                 if (!join) {
-                    insertIfAvailable(out, KEY_DISCUSS);
                     insertIfNotAvailable2(out, KEY_GIFT, KEY_DISCUSS, KEY_STORY);
                 }
                 insertIfNotAvailable(out, KEY_SHARE, KEY_STORY);
