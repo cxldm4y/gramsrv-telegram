@@ -11138,7 +11138,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private boolean meetRequestPeerRequirements(TLRPC.User user) {
         TLRPC.TL_requestPeerTypeUser type = (TLRPC.TL_requestPeerTypeUser) requestPeerType;
         return (
-                user != null &&
+                user != null && user.id != 777000 &&
                         !UserObject.isReplyUser(user) &&
                         !UserObject.isDeleted(user) &&
                         (type.bot == null || type.bot == user.bot) &&
