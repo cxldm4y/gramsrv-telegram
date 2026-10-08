@@ -5367,7 +5367,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
                 args.putLong("chat_id", -did);
             }
             args.putBoolean("open_gifts", true);
-            lastFragment.presentFragment(new ProfileActivity(args));
+            AndroidUtilities.runOnUIThread(() -> lastFragment.presentFragment(new ProfileActivity(args)), 350);
         }
     }
 
