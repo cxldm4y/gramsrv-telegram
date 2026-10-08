@@ -4282,54 +4282,88 @@ AlertDialog.Builder builder = new AlertDialog.Builder(activity);
     }
 
     public static boolean openForView(File f, String fileName, String mimeType, final Activity activity, Theme.ResourcesProvider resourcesProvider, boolean restrict) {
-        if (f != null && f.exists()) {
-            String realMimeType = null;
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            MimeTypeMap myMime = MimeTypeMap.getSingleton();
-            int idx = fileName == null ? -1 : fileName.lastIndexOf('.');
-            if (idx != -1) {
-                String ext = fileName.substring(idx + 1);
-                if (restrict && MessageObject.isV(ext)) {
-                    return true;
-                }
-                realMimeType = myMime.getMimeTypeFromExtension(ext.toLowerCase());
-                if (realMimeType == null) {
-                    realMimeType = mimeType;
-                    if (realMimeType == null || realMimeType.length() == 0) {
-                        realMimeType = null;
-                    }
-                }
-            }
-            if (realMimeType != null && realMimeType.equals("application/vnd.android.package-archive")) {
-                if (restrict) return true;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !ApplicationLoader.applicationContext.getPackageManager().canRequestPackageInstalls()) {
-                    AlertsCreator.createApkRestrictedDialog(activity, resourcesProvider).show();
-                    return true;
-                }
-            }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                intent.setDataAndType(FileProvider.getUriForFile(activity, ApplicationLoader.getApplicationId() + ".provider", f), realMimeType != null ? realMimeType : "text/plain");
-            } else {
-                intent.setDataAndType(Uri.fromFile(f), realMimeType != null ? realMimeType : "text/plain");
-            }
-            if (realMimeType != null) {
-                try {
-                    activity.startActivityForResult(intent, 500);
-                } catch (Exception e) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        intent.setDataAndType(FileProvider.getUriForFile(activity, ApplicationLoader.getApplicationId() + ".provider", f), "text/plain");
-                    } else {
-                        intent.setDataAndType(Uri.fromFile(f), "text/plain");
-                    }
-                    activity.startActivityForResult(intent, 500);
-                }
-            } else {
-                activity.startActivityForResult(intent, 500);
-            }
-            return true;
+        if (f == null || !f.exists()) {
+            return false;
         }
-        return false;
+        String realMimeType = null;
+        int idx = fileName == null ? -1 : fileName.lastIndexOf('.');
+        if (idx != -1) {
+            String ext = fileName.substring(idx + 1);
+            if (restrict && MessageObject.isV(ext)) {
+                return true;
+            }
+            realMimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(ext.toLowerCase());
+        }
+        if (realMimeType == null && mimeType != null && mimeType.length() != 0) {
+            realMimeType = mimeType;
+        }
+        boolean isApk = "application/vnd.android.package-archive".equals(realMimeType) || (fileName != null && fileName.toLowerCase().endsWith(".apk"));
+        if (isApk) {
+            realMimeType = "application/vnd.android.package-archive";
+            if (restrict) {
+                return true;
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !ApplicationLoader.applicationContext.getPackageManager().canRequestPackageInstalls()) {
+                AlertsCreator.createApkRestrictedDialog(activity, resourcesProvider).show();
+                return true;
+            }
+        }
+        Uri uri;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            uri = FileProvider.getUriForFile(activity, ApplicationLoader.getApplicationId() + ".provider", f);
+        } else {
+            uri = Uri.fromFile(f);
+        }
+        ArrayList<String> types = new ArrayList<>();
+        if (realMimeType != null) {
+            types.add(realMimeType);
+        }
+        if (realMimeType == null || realMimeType.startsWith("text/")) {
+            if (!types.contains("text/plain")) {
+                types.add("text/plain");
+            }
+        }
+        types.add("*/*");
+        Exception last = null;
+        for (String type : types) {
+            try {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                intent.setDataAndType(uri, type);
+                activity.startActivityForResult(intent, 500);
+                return true;
+            } catch (Exception e) {
+                last = e;
+                FileLog.e(e);
+            }
+        }
+        if (isApk) {
+            try {
+                Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
+                intent.setData(uri);
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
+                activity.startActivity(intent);
+                return true;
+            } catch (Exception e) {
+                last = e;
+                FileLog.e(e);
+            }
+        }
+        try {
+            Intent send = new Intent(Intent.ACTION_SEND);
+            send.setType("*/*");
+            send.putExtra(Intent.EXTRA_STREAM, uri);
+            send.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            activity.startActivity(Intent.createChooser(send, "Открыть с помощью"));
+            return true;
+        } catch (Exception e) {
+            last = e;
+            FileLog.e(e);
+        }
+        // TEMP diagnostics: remove once the real cause is known
+        android.widget.Toast.makeText(activity, "open failed: " + last, android.widget.Toast.LENGTH_LONG).show();
+        throw new RuntimeException(last);
     }
 
     public static boolean openForView(MessageObject message, Activity activity, Theme.ResourcesProvider resourcesProvider, boolean restrict) {
