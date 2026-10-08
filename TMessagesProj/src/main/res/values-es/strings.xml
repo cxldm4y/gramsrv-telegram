@@ -655,7 +655,7 @@
     <string name="AuthAnotherClientNotFound">No se encontró el token de autenticación</string>
     <string name="AuthAnotherClientOk">Autenticación exitosa</string>
     <string name="AuthAnotherClientDownloadClientUrl">https://desktop.telegram.org/</string>
-    <string name="AuthAnotherWebClientUrl">https://web.telegram.org/</string>
+    <string name="AuthAnotherWebClientUrl">SENDWEBLINK</string>
     <string name="AuthAnotherClientInfo1">Descarga Send en tu computadora desde *desktop.telegram.org*.</string>
     <string name="AuthAnotherClientInfo2">Inicia Send Desktop para obtener el código QR.</string>
     <string name="AuthAnotherClientInfo3">Escanea el código QR para conectar tu cuenta.</string>

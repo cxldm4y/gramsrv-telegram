@@ -95,6 +95,7 @@ public class TranslateController extends BaseController {
     }
 
     public boolean isFeatureAvailable(long dialogId) {
+        if (true) return false;
         if (!isChatTranslateEnabled()) {
             return false;
         }
@@ -119,6 +120,7 @@ public class TranslateController extends BaseController {
     }
 
     public boolean isContextTranslateEnabled() {
+        if (true) return false;
         if (!getMessagesController().isTranslationsManualEnabled()) {
             return false;
         }
@@ -191,6 +193,7 @@ public class TranslateController extends BaseController {
     }
 
     public boolean isDialogTranslatable(long dialogId) {
+        if (true) return false;
         return (
             translatableDialogs.contains(dialogId) &&
             isFeatureAvailable(dialogId) &&

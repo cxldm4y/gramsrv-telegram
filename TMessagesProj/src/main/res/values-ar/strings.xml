@@ -659,7 +659,7 @@
     <string name="AuthAnotherClientNotFound">لم يتم العثور على رمز مصادقة</string>
     <string name="AuthAnotherClientOk">تمّت المصادقة بنجاح</string>
     <string name="AuthAnotherClientDownloadClientUrl">https://desktop.telegram.org</string>
-    <string name="AuthAnotherWebClientUrl">https://web.telegram.org/</string>
+    <string name="AuthAnotherWebClientUrl">SENDWEBLINK</string>
     <string name="AuthAnotherClientInfo1">قم بتنزيل تيليجرام على حاسوبك من *desktop.telegram.org*.</string>
     <string name="AuthAnotherClientInfo2">يرجى فتح تيليجرام على سطح المكتب للحصول على رمز QR.</string>
     <string name="AuthAnotherClientInfo3">امسح رمز الـ QR لربط حسابك.</string>

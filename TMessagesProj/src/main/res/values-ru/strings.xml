@@ -1238,7 +1238,7 @@
     <string name="AuthAnotherClientUrl">Этот код можно использовать для входа в Ваш аккаунт в Send.
 
 Для подтверждения входа перейдите в Настройки &gt; Устройства &gt; Сканировать QR и отсканируйте этот код.</string>
-    <string name="AuthAnotherWebClientUrl">https://web.telegram.org/</string>
+    <string name="AuthAnotherWebClientUrl">SENDWEBLINK</string>
     <string name="AuthorHiddenDescription">Авторы этих сообщений запретили ссылаться на них при пересылке.</string>
     <string name="AutoDelete1Day">1 день</string>
     <string name="AutoDelete1Hour">1 час</string>

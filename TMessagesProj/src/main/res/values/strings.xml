@@ -2756,7 +2756,7 @@
     <string name="AuthAnotherClientNotFound">No auth token found</string>
     <string name="AuthAnotherClientOk">Auth successfull</string>
     <string name="AuthAnotherClientDownloadClientUrl">https://getdesktop.telegram.org/</string>
-    <string name="AuthAnotherWebClientUrl">https://web.telegram.org/</string>
+    <string name="AuthAnotherWebClientUrl">SENDWEBLINK</string>
     <string name="AuthAnotherClientInfo1">Download Send on your computer from *getdesktop.telegram.org*.</string>
     <string name="AuthAnotherClientInfo2">Run Send Desktop to get the QR code.</string>
     <string name="AuthAnotherClientInfo3">Scan the QR code to connect your account.</string>

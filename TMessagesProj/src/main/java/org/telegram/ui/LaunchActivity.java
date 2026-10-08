@@ -1504,7 +1504,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
     @SuppressLint("Range")
     private boolean handleIntent(Intent intent, boolean isNew, boolean restore, boolean fromPassword, Browser.Progress progress, boolean rebuildFragments, boolean openedTelegram) {
         // Normalize the public telesrv:// scheme to Telegram's internal tg:// flow.
-        if (intent != null && intent.getData() != null && "telesrv".equalsIgnoreCase(intent.getData().getScheme())) {
+        if (intent != null && intent.getData() != null && ("telesrv".equalsIgnoreCase(intent.getData().getScheme()) || "send".equalsIgnoreCase(intent.getData().getScheme()))) {
             intent.setData(intent.getData().buildUpon().scheme("tg").build());
         }
         if (GiftInfoBottomSheet.handleIntent(intent, progress)) {
