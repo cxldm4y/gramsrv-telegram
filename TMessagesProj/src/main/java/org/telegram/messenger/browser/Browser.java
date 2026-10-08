@@ -696,6 +696,12 @@ public class Browser {
             }
             return false;
         }
+        String ownLinkPrefix = MessagesController.getInstance(UserConfig.selectedAccount).linkPrefix;
+        if (!TextUtils.isEmpty(ownLinkPrefix) && host.equals(ownLinkPrefix.toLowerCase())) {
+            uri = Uri.parse("https://telesrv.net" + (TextUtils.isEmpty(uri.getPath()) ? "" : uri.getPath()) + (TextUtils.isEmpty(uri.getQuery()) ? "" : "?" + uri.getQuery()));
+            host = "telesrv.net";
+        }
+
 
         Matcher prefixMatcher = LaunchActivity.PREFIX_T_ME_PATTERN.matcher(host);
         if (prefixMatcher.find()) {

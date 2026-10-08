@@ -1966,6 +1966,13 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                 case "http":
                                 case "https": {
                                     String host = data.getHost().toLowerCase();
+                                    String ownAuthority = AndroidUtilities.getHostAuthority(data);
+                                    String ownLinkPrefix = MessagesController.getInstance(UserConfig.selectedAccount).linkPrefix;
+                                    if (ownAuthority != null && !TextUtils.isEmpty(ownLinkPrefix) && ownAuthority.equalsIgnoreCase(ownLinkPrefix)) {
+                                        data = Uri.parse("https://telesrv.net" + (TextUtils.isEmpty(data.getPath()) ? "" : data.getPath()) + (TextUtils.isEmpty(data.getQuery()) ? "" : "?" + data.getQuery()));
+                                        host = "telesrv.net";
+                                    }
+
                                     Matcher prefixMatcher = PREFIX_T_ME_PATTERN.matcher(host);
                                     boolean isPrefix = prefixMatcher.find();
                                     if (host.equals("telesrv.net") || isPrefix) {
